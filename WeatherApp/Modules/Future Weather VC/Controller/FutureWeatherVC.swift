@@ -22,6 +22,8 @@ class FutureWeatherVC : UIViewController{
     var manager = FutureWeatherManager.shared
     var locationManager = CLLocationManager()
     
+    var weather: [FutureWeatherModelToShow] = []
+    
     var long: Double?
     var lat: Double?
     
@@ -32,7 +34,7 @@ class FutureWeatherVC : UIViewController{
         tableViewOutlet.dataSource = self
         tableViewOutlet.delegate = self
         tableViewOutlet.separatorStyle = .none
-        
+
         locationManager.delegate = self
         locationManager.requestLocation()
         
@@ -42,9 +44,9 @@ class FutureWeatherVC : UIViewController{
             return
         }
         
-       
+        manager.futureWeatherDelegate = self
             manager.fetchWeather(latitude: CLLocationDegrees(Float(latDouble)), longtitude: CLLocationDegrees(Float(longDouble)))
-
+        
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
@@ -68,12 +70,43 @@ extension FutureWeatherVC: CLLocationManagerDelegate{
 
 extension FutureWeatherVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return weather.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! Cell
         
+        let item = weather[indexPath.row]
+        cell.label1.text = item.weatherDesc
+        cell.label2.text = String(item.temp)
+        cell.label3.text = String(item.dateSeconds)
+        
+        let myTimeInterval = TimeInterval(item.dateSeconds)
+        let time = NSDate (timeIntervalSince1970: TimeInterval(myTimeInterval))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-DD HH:mm a"
+        
+        let myString = formatter.string(from: time as Date)
+        let yourData = formatter.date(from: myString)
+        
     return cell
     }
+}
+
+extension FutureWeatherVC:FutureWeatherDelegate{
+    func fetchWeather(weather: [FutureWeatherModelToShow]) {
+        print("weather: \(weather)")
+        self.weather = weather
+        DispatchQueue.main.async {
+            self.tableViewOutlet.reloadData()
+        }
+        
+    }
+    
+    func errorFetchingWeather(error: Error) {
+        print("error: \(error)")
+    }
+    
+    
 }

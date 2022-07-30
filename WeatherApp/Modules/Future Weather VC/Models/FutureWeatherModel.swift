@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct FutureWeatherModel:Decodable{
-    let lists: [weatherModel]
+struct FutureWeatherModel:Codable{
+    let list: [WeatherModel]
 }
 
-struct weatherModel:Decodable{
+struct WeatherModel:Codable{
     let dt: Int
     let main: MainTemp
     let weather: [WeatherDescriptionModel]
 }
 
-struct MainTemp:Decodable{
+struct MainTemp:Codable{
     let temp: Double
 }
 
-struct WeatherDescriptionModel: Decodable{
+struct WeatherDescriptionModel: Codable{
     let main: String
 }
