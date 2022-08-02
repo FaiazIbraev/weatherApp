@@ -191,19 +191,25 @@
                                                     <rect key="frame" x="0.0" y="10" width="382" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pk-av-bdN">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="12.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KT-De-HYn">
-                                                            <rect key="frame" x="0.0" y="30" width="382" height="20"/>
+                                                            <rect key="frame" x="0.0" y="22.5" width="382" height="12.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="knD-AN-MQ8">
-                                                            <rect key="frame" x="0.0" y="60" width="382" height="20"/>
+                                                            <rect key="frame" x="0.0" y="45" width="382" height="12.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ap6-MC-aeT">
+                                                            <rect key="frame" x="0.0" y="67.5" width="382" height="12.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -222,6 +228,7 @@
                                             <outlet property="label1" destination="2pk-av-bdN" id="YVx-dP-Wxy"/>
                                             <outlet property="label2" destination="1KT-De-HYn" id="JUh-IB-d9O"/>
                                             <outlet property="label3" destination="knD-AN-MQ8" id="1g1-ff-5MN"/>
+                                            <outlet property="label4" destination="ap6-MC-aeT" id="0gb-nb-6BD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -78,20 +78,49 @@ extension FutureWeatherVC: UITableViewDelegate, UITableViewDataSource{
         
         let item = weather[indexPath.row]
         cell.label1.text = item.weatherDesc
-        cell.label2.text = String(item.temp)
-        cell.label3.text = String(item.dateSeconds)
-        
-        let myTimeInterval = TimeInterval(item.dateSeconds)
-        let time = NSDate (timeIntervalSince1970: TimeInterval(myTimeInterval))
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-DD HH:mm a"
-        
-        let myString = formatter.string(from: time as Date)
-        let yourData = formatter.date(from: myString)
+        cell.label2.text = "\(String(item.temp)) °C"
+//        cell.label3.text = String(item.dateSeconds)
+        cell.label3.text = getDateString(time1970: item.dateSeconds)
+        cell.label4.text = getTimeString(time1970: item.dateSeconds)
         
     return cell
+    
     }
+    
+    func getDateString (time1970: Int) -> String{
+        let myDateInterval = TimeInterval(time1970)
+        let time = NSDate(timeIntervalSince1970: TimeInterval(myDateInterval))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let myDateString = formatter.string(from: time as Date)
+        let yourDate = formatter.date(from: myDateString)
+        
+        formatter.dateFormat = "dd-MM-yyyy"
+        let myStringDate = formatter.string(from: yourDate!)
+        
+        return myStringDate
+        
+    }
+    
+    func getTimeString (time1970: Int) -> String{
+        let myTimeInterval = TimeInterval(time1970)
+        let time = NSDate(timeIntervalSince1970: TimeInterval(myTimeInterval))
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        let myString = formatter.string(from: time as Date)
+        let yourDate = formatter.date(from: myString)
+        
+        formatter.dateFormat = "HH:mm a"
+        let myStringTime = formatter.string(from: yourDate!)
+        
+        return myStringTime
+        
+    }
+    
 }
 
 extension FutureWeatherVC:FutureWeatherDelegate{
